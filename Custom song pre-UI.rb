@@ -2,32 +2,38 @@
 use_bpm 167
 intro_notes = [:E3, :E3, :E3, :E3, :G3, :A4, :B4, :E3, :G3, :A4, :B4]
 intro_sleeps = [1.5, 1.5, 1, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
-repulsor_sound = "C:/Users/mario_restori/Desktop/Repulsor Blast (Iron Man) - Sound Effect for editing.mp3"
-tony_talk = "C:/Users/mario_restori/Documents/Audacity/Avengers Angry Argument Scene - The Avengers 2012 movie scene.wav"
-can_you = "C:/Users/mario_restori/Documents/Audacity/can_you.wav"
-and_i ="C:/Users/mario_restori/Documents/Audacity/final...i...amironman.mp3.wav"
+repulsor_sound = "C:/Users/User/Downloads/Repulsor Blast (Iron Man) - Sound Effect for editing.mp3"
+tony_talk = "C:/Users/User/Downloads/Avengers argument uh oh.wav"
+can_you = "C:/Users/User/Downloads/Black Sabbath - Paranoid (Vocals Only).wav"
+and_i = "C:/Users/User/Downloads/final...i...amironman.mp3.wav"
 define :play_note do |note, time|
   use_synth :pluck
   play note
   sleep time
 end
 define :guitar_solo do
+  use_synth :pluck
+  
   play :g4, amp: 0.15
   sleep 0.7
   play :b4, amp: 0.15
   sleep 0.7
   play :g4, amp: 0.15
   sleep 3
-  play :g4, amp: 0.15
-  sleep 0.7
-  play :g4, amp: 0.15
-  sleep 0.7
+  
+  2.times do
+    play :g4, amp: 0.15
+    sleep 0.7
+  end
+  
   play :a4, amp: 0.15
   sleep 0.7
-  play :e4, amp: 0.15
-  sleep 0.7
-  play :e4, amp: 0.15
-  sleep 0.7
+  
+  2.times do
+    play :e4, amp: 0.15
+    sleep 0.7
+  end
+  
   play :b4, amp: 0.15
   sleep 0.7
   play :g4, amp: 0.15
@@ -44,28 +50,22 @@ define :guitar_solo do
   sleep 0.7
 end
 define :main_melody do
-  play :g4
-  sleep 0.6
-  play :g4
-  sleep 0.6
-  play :g4
-  sleep 0.6
-  play :g4
-  sleep 0.6
+  4.times do
+    play :g4
+    sleep 0.6
+  end
   play :g4
   sleep 1
-  play :e4
-  sleep 0.75
-  play :e4
-  sleep 0.75
+  2.times do
+    play :e4
+    sleep 0.75
+  end
   play :e4
   sleep 1
-  play :d4
-  sleep 0.6
-  play :d4
-  sleep 0.6
-  play :d4
-  sleep 0.6
+  3.times do
+    play :d4
+    sleep 0.6
+  end
   play :e4
   sleep 1.5
   play :g4
@@ -77,15 +77,19 @@ define :main_melody do
 end
 define :guitar_rift do
   use_synth :pluck
+  
   play :b4, amp: 2
   sleep 4
+  
   play :g4, amp: 2
   sleep 2
+  
   play :a4, amp: 2
   sleep 1.5
 end
+
 sample and_i, amp: 3
-sleep 30
+sleep 30 
 2.times do
   i = 0
   11.times do
@@ -114,14 +118,13 @@ end
   main_melody
 end
 guitar_rift
-sample repulsor_sound
+sample repulsor_sound, amp: 3
 sleep 6
 guitar_rift
 sleep 6
 2.times do
   main_melody
 end
-sleep 0.7
 sample can_you, amp: 2
 2.times do
   guitar_rift
@@ -130,7 +133,7 @@ end
 2.times do
   main_melody
 end
-sample tony_talk, amp: 5
+sample tony_talk, amp: 6
 4.times do
   guitar_solo
 end
